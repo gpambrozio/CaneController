@@ -10,18 +10,26 @@
 
 @interface ViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *labelVoltage;
+@property (nonatomic, strong) id beanDidUpdateBatteryVoltageObserver;
+
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self.beanDidUpdateBatteryVoltageObserver];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.beanDidUpdateBatteryVoltageObserver = [[NSNotificationCenter defaultCenter] addObserverForName:@"beanDidUpdateBatteryVoltage"
+                                                                                                 object:nil
+                                                                                                  queue:[NSOperationQueue mainQueue]
+                                                                                             usingBlock:^(NSNotification *_Nonnull note) {
+                                                                                                 NSNumber *voltage = note.userInfo[@"voltage"];
+                                                                                                 self.labelVoltage.text = [NSString stringWithFormat:@"%.3fV", voltage.doubleValue];
+                                                                                             }];
 }
 
 @end

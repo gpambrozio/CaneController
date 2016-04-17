@@ -8,15 +8,36 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate ()
+#import "PTDBeanManager.h"
+
+#define kUserPreferencesLastBatteryLevel @"UserPreferencesLastBatteryLevel"
+
+@interface AppDelegate () <PTDBeanManagerDelegate, PTDBeanDelegate>
+
+@property (nonatomic, strong) PTDBeanManager *beanManager;
+@property (nonatomic, strong) PTDBean *bean;
+@property (nonatomic, assign) BOOL waitingToReportDisconnect;
+
+@property (nonatomic, assign) double lastBatteryLevel;
 
 @end
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
+    self.beanManager = [[PTDBeanManager alloc] initWithDelegate:self];
+
+    UIUserNotificationType types = (UIUserNotificationTypeAlert |
+                                    UIUserNotificationTypeBadge |
+                                    UIUserNotificationTypeSound);
+
+    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:types
+                                                                                                          categories:nil]];
+
+    self.lastBatteryLevel = [[NSUserDefaults standardUserDefaults] doubleForKey:kUserPreferencesLastBatteryLevel];
+
     return YES;
 }
 
@@ -40,6 +61,97 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
+}
+
+#pragma mark - User Notifications
+
+- (void)postNotificationWithText:(NSString *)text {
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.fireDate = [NSDate date];
+    notification.alertBody = text;
+    notification.alertTitle = @"Something happened";
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+}
+
+#pragma mark - PTDBeanManagerDelegate
+
+// check to make sure we're on
+- (void)beanManagerDidUpdateState:(PTDBeanManager *)beanManager {
+    if (beanManager.state == BeanManagerState_PoweredOn) {
+        // if we're on, scan for advertisting beans
+        NSError *scanError;
+        [beanManager startScanningForBeans_error:&scanError];
+        if (scanError) {
+            NSLog(@"%@", [scanError localizedDescription]);
+        }
+    } else if (beanManager.state == BeanManagerState_PoweredOff) {
+        // do something else
+    }
+}
+
+// bean discovered
+- (void)beanManager:(PTDBeanManager *)beanManager didDiscoverBean:(PTDBean *)bean error:(NSError *)error {
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
+        return;
+    }
+    if ([bean.name isEqualToString:@"Cane"]) {
+        NSError *connectError;
+        [beanManager connectToBean:bean error:&connectError];
+        if (connectError) {
+            NSLog(@"%@", [connectError localizedDescription]);
+        }
+    }
+}
+
+// bean connected
+- (void)beanManager:(PTDBeanManager *)beanManager didConnectBean:(PTDBean *)bean error:(NSError *)error {
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
+        return;
+    }
+    if ([bean.name isEqualToString:@"Cane"]) {
+        self.bean = bean;
+        self.bean.delegate = self;
+        self.bean.autoReconnect = YES;
+        if (!self.waitingToReportDisconnect) {
+            [self postNotificationWithText:@"Cane Connected!!"];
+        }
+    }
+}
+
+- (void)beanManager:(PTDBeanManager *)beanManager didDisconnectBean:(PTDBean *)bean error:(NSError *)error {
+    NSLog(@"Bean disconnected");
+    self.waitingToReportDisconnect = YES;
+    self.bean.delegate = nil;
+    self.bean = nil;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.bean == nil) {
+            [self postNotificationWithText:@"Cane Disconnected... :("];
+            self.waitingToReportDisconnect = NO;
+        }
+    });
+}
+
+#pragma mark - PTDBeanDelegate
+
+- (void)beanDidUpdateBatteryVoltage:(PTDBean *)bean error:(NSError *)error {
+    if (bean.batteryVoltage.doubleValue > 0.0) {
+        NSLog(@"Battery = %.3f", bean.batteryVoltage.doubleValue);
+        double diff = fabs(bean.batteryVoltage.doubleValue - self.lastBatteryLevel);
+        if (diff >= 0.02) {
+            self.lastBatteryLevel = bean.batteryVoltage.doubleValue;
+            [[NSUserDefaults standardUserDefaults] setDouble:self.lastBatteryLevel forKey:kUserPreferencesLastBatteryLevel];
+            [self postNotificationWithText:[[NSString alloc] initWithFormat:@"Battery level: %.3f", self.lastBatteryLevel]];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"beanDidUpdateBatteryVoltage"
+                                                            object:nil
+                                                          userInfo:@{ @"voltage" : bean.batteryVoltage }];
+    }
 }
 
 @end
