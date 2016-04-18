@@ -30,6 +30,7 @@
 		EC5F63A61CC0C1350018ED35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC5F63A91CC0C1350018ED35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC5F63AB1CC0C1350018ED35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECFCCBBB1CC463470071C460 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +84,7 @@
 				EC5F63A81CC0C1350018ED35 /* LaunchScreen.storyboard */,
 				EC5F63AB1CC0C1350018ED35 /* Info.plist */,
 				EC5F639A1CC0C1350018ED35 /* Supporting Files */,
+				ECFCCBBB1CC463470071C460 /* PrefixHeader.pch */,
 			);
 			path = CaneController;
 			sourceTree = "<group>";
@@ -348,6 +350,7 @@
 			baseConfigurationReference = D3E55240971B3F8CE16CF461 /* Pods-CaneController.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = CaneController/PrefixHeader.pch;
 				INFOPLIST_FILE = CaneController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.eng.gustavo.CaneController;
@@ -360,6 +363,7 @@
 			baseConfigurationReference = B25C5C7466EF6137C5C8A24E /* Pods-CaneController.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = CaneController/PrefixHeader.pch;
 				INFOPLIST_FILE = CaneController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.eng.gustavo.CaneController;

@@ -27,6 +27,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
+    [DDLog addLogger:[DDTTYLogger sharedInstance]]; // TTY = Xcode console
+
+    DDFileLogger *fileLogger = [[DDFileLogger alloc] init]; // File Logger
+    fileLogger.rollingFrequency = 60 * 60 * 24 * 7;         // 1 week rolling
+    fileLogger.logFileManager.maximumNumberOfLogFiles = 8;
+    [DDLog addLogger:fileLogger];
+
     self.beanManager = [[PTDBeanManager alloc] initWithDelegate:self];
 
     UIUserNotificationType types = (UIUserNotificationTypeAlert |
@@ -86,7 +93,7 @@
         NSError *scanError;
         [beanManager startScanningForBeans_error:&scanError];
         if (scanError) {
-            NSLog(@"%@", [scanError localizedDescription]);
+            DDLogDebug(@"Error starting to scan: %@", [scanError localizedDescription]);
         }
     } else if (beanManager.state == BeanManagerState_PoweredOff) {
         // do something else
@@ -96,14 +103,15 @@
 // bean discovered
 - (void)beanManager:(PTDBeanManager *)beanManager didDiscoverBean:(PTDBean *)bean error:(NSError *)error {
     if (error) {
-        NSLog(@"%@", [error localizedDescription]);
+        DDLogDebug(@"Error discovering Bean: %@", [error localizedDescription]);
         return;
     }
+    DDLogDebug(@"Discovered Bean: %@, ID: %@", bean.name, bean.identifier);
     if ([bean.name isEqualToString:@"Cane"]) {
         NSError *connectError;
         [beanManager connectToBean:bean error:&connectError];
         if (connectError) {
-            NSLog(@"%@", [connectError localizedDescription]);
+            DDLogDebug(@"Error connecting Bean: %@", [connectError localizedDescription]);
         }
     }
 }
@@ -111,9 +119,10 @@
 // bean connected
 - (void)beanManager:(PTDBeanManager *)beanManager didConnectBean:(PTDBean *)bean error:(NSError *)error {
     if (error) {
-        NSLog(@"%@", [error localizedDescription]);
+        DDLogDebug(@"Error connecting Bean: %@", [error localizedDescription]);
         return;
     }
+    DDLogDebug(@"Connected Bean: %@, ID: %@", bean.name, bean.identifier);
     if ([bean.name isEqualToString:@"Cane"]) {
         self.bean = bean;
         self.bean.delegate = self;
@@ -125,7 +134,7 @@
 }
 
 - (void)beanManager:(PTDBeanManager *)beanManager didDisconnectBean:(PTDBean *)bean error:(NSError *)error {
-    NSLog(@"Bean disconnected");
+    DDLogDebug(@"Disconnected Bean: %@, ID: %@", bean.name, bean.identifier);
     self.waitingToReportDisconnect = YES;
     self.bean.delegate = nil;
     self.bean = nil;
@@ -140,8 +149,8 @@
 #pragma mark - PTDBeanDelegate
 
 - (void)beanDidUpdateBatteryVoltage:(PTDBean *)bean error:(NSError *)error {
+    DDLogDebug(@"Battery = %.3f", bean.batteryVoltage.doubleValue);
     if (bean.batteryVoltage.doubleValue > 0.0) {
-        NSLog(@"Battery = %.3f", bean.batteryVoltage.doubleValue);
         double diff = fabs(bean.batteryVoltage.doubleValue - self.lastBatteryLevel);
         if (diff >= 0.02) {
             self.lastBatteryLevel = bean.batteryVoltage.doubleValue;
