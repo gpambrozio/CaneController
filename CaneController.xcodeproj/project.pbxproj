@@ -7,54 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2219439DE068EE2E809C6EF5 /* libPods-CaneController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3676A5D37DF38C4BC77F662 /* libPods-CaneController.a */; };
 		EC5F639C1CC0C1350018ED35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5F639B1CC0C1350018ED35 /* main.m */; };
 		EC5F639F1CC0C1350018ED35 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5F639E1CC0C1350018ED35 /* AppDelegate.m */; };
 		EC5F63A21CC0C1350018ED35 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5F63A11CC0C1350018ED35 /* ViewController.m */; };
 		EC5F63A51CC0C1350018ED35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5F63A31CC0C1350018ED35 /* Main.storyboard */; };
 		EC5F63A71CC0C1350018ED35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC5F63A61CC0C1350018ED35 /* Assets.xcassets */; };
 		EC5F63AA1CC0C1350018ED35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5F63A81CC0C1350018ED35 /* LaunchScreen.storyboard */; };
-		EC5F63CB1CC0C2DF0018ED35 /* libBean iOS Library.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5F63BE1CC0C2A30018ED35 /* libBean iOS Library.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		EC5F63BB1CC0C2A30018ED35 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EC5F63B31CC0C2A30018ED35 /* Bean OSX Library.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 52D34E2418A9B455002F0C59;
-			remoteInfo = "Bean OS X Library";
-		};
-		EC5F63BD1CC0C2A30018ED35 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EC5F63B31CC0C2A30018ED35 /* Bean OSX Library.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 969B89481908951F00AA093C;
-			remoteInfo = "Bean iOS Library";
-		};
-		EC5F63BF1CC0C2A30018ED35 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EC5F63B31CC0C2A30018ED35 /* Bean OSX Library.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 52D34E3718A9B455002F0C59;
-			remoteInfo = "OS X Unit Tests";
-		};
-		EC5F63C11CC0C2A30018ED35 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EC5F63B31CC0C2A30018ED35 /* Bean OSX Library.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 36DD089C1C8F8AC700E06214;
-			remoteInfo = "OS X Integration Tests";
-		};
-		EC5F63C91CC0C2CC0018ED35 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EC5F63B31CC0C2A30018ED35 /* Bean OSX Library.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 969B89471908951F00AA093C;
-			remoteInfo = "Bean iOS Library";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		B25C5C7466EF6137C5C8A24E /* Pods-CaneController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaneController.release.xcconfig"; path = "Pods/Target Support Files/Pods-CaneController/Pods-CaneController.release.xcconfig"; sourceTree = "<group>"; };
+		D3E55240971B3F8CE16CF461 /* Pods-CaneController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaneController.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CaneController/Pods-CaneController.debug.xcconfig"; sourceTree = "<group>"; };
+		E3676A5D37DF38C4BC77F662 /* libPods-CaneController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CaneController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC5F63971CC0C1350018ED35 /* CaneController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaneController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC5F639B1CC0C1350018ED35 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EC5F639D1CC0C1350018ED35 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -65,7 +30,6 @@
 		EC5F63A61CC0C1350018ED35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC5F63A91CC0C1350018ED35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC5F63AB1CC0C1350018ED35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EC5F63B31CC0C2A30018ED35 /* Bean OSX Library.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Bean OSX Library.xcodeproj"; path = "../Bean-iOS-OSX-SDK/Bean OSX Static Library/Bean OSX Library.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,19 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC5F63CB1CC0C2DF0018ED35 /* libBean iOS Library.a in Frameworks */,
+				2219439DE068EE2E809C6EF5 /* libPods-CaneController.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		692786CF73FBA835AB3AB4EB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D3E55240971B3F8CE16CF461 /* Pods-CaneController.debug.xcconfig */,
+				B25C5C7466EF6137C5C8A24E /* Pods-CaneController.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EC5F638E1CC0C1350018ED35 = {
 			isa = PBXGroup;
 			children = (
-				EC5F63B31CC0C2A30018ED35 /* Bean OSX Library.xcodeproj */,
 				EC5F63991CC0C1350018ED35 /* CaneController */,
 				EC5F63981CC0C1350018ED35 /* Products */,
+				692786CF73FBA835AB3AB4EB /* Pods */,
+				EEDF8D7A941FAACBB4BD5BD9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,15 +95,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		EC5F63B41CC0C2A30018ED35 /* Products */ = {
+		EEDF8D7A941FAACBB4BD5BD9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EC5F63BC1CC0C2A30018ED35 /* libBean OS X Library.a */,
-				EC5F63BE1CC0C2A30018ED35 /* libBean iOS Library.a */,
-				EC5F63C01CC0C2A30018ED35 /* OS X Unit Tests.xctest */,
-				EC5F63C21CC0C2A30018ED35 /* OS X Integration Tests.xctest */,
+				E3676A5D37DF38C4BC77F662 /* libPods-CaneController.a */,
 			);
-			name = Products;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,14 +110,16 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC5F63AE1CC0C1350018ED35 /* Build configuration list for PBXNativeTarget "CaneController" */;
 			buildPhases = (
+				832017CCB5186725C4CF9CA5 /* Check Pods Manifest.lock */,
 				EC5F63931CC0C1350018ED35 /* Sources */,
 				EC5F63941CC0C1350018ED35 /* Frameworks */,
 				EC5F63951CC0C1350018ED35 /* Resources */,
+				D6145E1988D28782FC33E24F /* Embed Pods Frameworks */,
+				193FF1F5059EBDAC1639C9A5 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				EC5F63CA1CC0C2CC0018ED35 /* PBXTargetDependency */,
 			);
 			name = CaneController;
 			productName = CaneController;
@@ -187,49 +160,12 @@
 			mainGroup = EC5F638E1CC0C1350018ED35;
 			productRefGroup = EC5F63981CC0C1350018ED35 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = EC5F63B41CC0C2A30018ED35 /* Products */;
-					ProjectRef = EC5F63B31CC0C2A30018ED35 /* Bean OSX Library.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				EC5F63961CC0C1350018ED35 /* CaneController */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		EC5F63BC1CC0C2A30018ED35 /* libBean OS X Library.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libBean OS X Library.a";
-			remoteRef = EC5F63BB1CC0C2A30018ED35 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		EC5F63BE1CC0C2A30018ED35 /* libBean iOS Library.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libBean iOS Library.a";
-			remoteRef = EC5F63BD1CC0C2A30018ED35 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		EC5F63C01CC0C2A30018ED35 /* OS X Unit Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "OS X Unit Tests.xctest";
-			remoteRef = EC5F63BF1CC0C2A30018ED35 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		EC5F63C21CC0C2A30018ED35 /* OS X Integration Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "OS X Integration Tests.xctest";
-			remoteRef = EC5F63C11CC0C2A30018ED35 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EC5F63951CC0C1350018ED35 /* Resources */ = {
@@ -244,6 +180,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		193FF1F5059EBDAC1639C9A5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CaneController/Pods-CaneController-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		832017CCB5186725C4CF9CA5 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D6145E1988D28782FC33E24F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CaneController/Pods-CaneController-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EC5F63931CC0C1350018ED35 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -256,14 +240,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		EC5F63CA1CC0C2CC0018ED35 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Bean iOS Library";
-			targetProxy = EC5F63C91CC0C2CC0018ED35 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EC5F63A31CC0C1350018ED35 /* Main.storyboard */ = {
@@ -369,9 +345,9 @@
 		};
 		EC5F63AF1CC0C1350018ED35 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3E55240971B3F8CE16CF461 /* Pods-CaneController.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				HEADER_SEARCH_PATHS = "../Bean-iOS-OSX-SDK/source/**";
 				INFOPLIST_FILE = CaneController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.eng.gustavo.CaneController;
@@ -381,9 +357,9 @@
 		};
 		EC5F63B01CC0C1350018ED35 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B25C5C7466EF6137C5C8A24E /* Pods-CaneController.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				HEADER_SEARCH_PATHS = "../Bean-iOS-OSX-SDK/source/**";
 				INFOPLIST_FILE = CaneController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.eng.gustavo.CaneController;
