@@ -34,7 +34,8 @@
     fileLogger.logFileManager.maximumNumberOfLogFiles = 8;
     [DDLog addLogger:fileLogger];
 
-    self.beanManager = [[PTDBeanManager alloc] initWithDelegate:self];
+    self.beanManager = [[PTDBeanManager alloc] initWithDelegate:self
+                                     stateRestorationIdentifier:@"myBeanManager"];
 
     UIUserNotificationType types = (UIUserNotificationTypeAlert |
                                     UIUserNotificationTypeBadge |
