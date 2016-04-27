@@ -17,6 +17,7 @@
 @property (nonatomic, strong) PTDBeanManager *beanManager;
 @property (nonatomic, strong) PTDBean *bean;
 @property (nonatomic, assign) BOOL waitingToReportDisconnect;
+@property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundTaskIdentifier;
 
 @property (nonatomic, assign) double lastBatteryLevel;
 
@@ -26,6 +27,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
+    self.backgroundTaskIdentifier = UIBackgroundTaskInvalid;
 
     [DDLog addLogger:[DDTTYLogger sharedInstance]]; // TTY = Xcode console
 
@@ -45,6 +48,8 @@
                                                                                                           categories:nil]];
 
     self.lastBatteryLevel = [[NSUserDefaults standardUserDefaults] doubleForKey:kUserPreferencesLastBatteryLevel];
+
+    DDLogDebug(@"App started");
 
     return YES;
 }
@@ -69,6 +74,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    DDLogDebug(@"applicationWillTerminate");
 }
 
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
@@ -108,7 +114,7 @@
         return;
     }
     DDLogDebug(@"Discovered Bean: %@, ID: %@", bean.name, bean.identifier);
-    if ([bean.name isEqualToString:@"Cane"]) {
+    if (self.bean == nil && [bean.name isEqualToString:@"Cane"]) {
         NSError *connectError;
         [beanManager connectToBean:bean error:&connectError];
         if (connectError) {
@@ -136,13 +142,26 @@
 
 - (void)beanManager:(PTDBeanManager *)beanManager didDisconnectBean:(PTDBean *)bean error:(NSError *)error {
     DDLogDebug(@"Disconnected Bean: %@, ID: %@", bean.name, bean.identifier);
-    self.waitingToReportDisconnect = YES;
+    if (!self.waitingToReportDisconnect) {
+        self.waitingToReportDisconnect = YES;
+        self.backgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithName:@"waiting"
+                                                                                     expirationHandler:^{
+                                                                                         if (self.backgroundTaskIdentifier != UIBackgroundTaskInvalid) {
+                                                                                             [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];
+                                                                                             self.backgroundTaskIdentifier = UIBackgroundTaskInvalid;
+                                                                                         }
+                                                                                     }];
+    }
     self.bean.delegate = nil;
     self.bean = nil;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(20 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (self.bean == nil) {
             [self postNotificationWithText:@"Cane Disconnected... :("];
             self.waitingToReportDisconnect = NO;
+            if (self.backgroundTaskIdentifier != UIBackgroundTaskInvalid) {
+                [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];
+                self.backgroundTaskIdentifier = UIBackgroundTaskInvalid;
+            }
         }
     });
 }
