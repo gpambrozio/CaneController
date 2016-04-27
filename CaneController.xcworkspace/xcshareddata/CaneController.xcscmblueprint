@@ -1,15 +1,18 @@
 {
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "9841340F25FDB6229BEA9D2C4AE5F82EA00D3C78",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "39572FF45BBA82D9E0A47E8917BFD83331580CAC" : 0,
     "4E972D5D7D21C90D5F21CCCB7813586DCADDD8A1" : 0,
-    "39572FF45BBA82D9E0A47E8917BFD83331580CAC" : 0
+    "9841340F25FDB6229BEA9D2C4AE5F82EA00D3C78" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "29226AD8-C6EB-4386-B23B-AFCD005BC992",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "39572FF45BBA82D9E0A47E8917BFD83331580CAC" : "Bean-iOS-OSX-SDK\/App%20Message%20Definitions\/",
     "4E972D5D7D21C90D5F21CCCB7813586DCADDD8A1" : "Bean-iOS-OSX-SDK\/",
-    "39572FF45BBA82D9E0A47E8917BFD83331580CAC" : "Bean-iOS-OSX-SDK\/App%20Message%20Definitions\/"
+    "9841340F25FDB6229BEA9D2C4AE5F82EA00D3C78" : "CaneController\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "CaneController",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -24,6 +27,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/PunchThrough\/Bean-iOS-OSX-SDK.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4E972D5D7D21C90D5F21CCCB7813586DCADDD8A1"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/gpambrozio\/CaneController.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9841340F25FDB6229BEA9D2C4AE5F82EA00D3C78"
     }
   ]
 }

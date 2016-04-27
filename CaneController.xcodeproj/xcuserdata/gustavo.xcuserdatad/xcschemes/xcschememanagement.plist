@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>TodayCane.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>EC5F63961CC0C1350018ED35</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EC65DA561CD091E3003A52E8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

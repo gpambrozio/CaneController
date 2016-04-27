@@ -134,6 +134,7 @@
         self.bean = bean;
         self.bean.delegate = self;
         self.bean.autoReconnect = YES;
+        [self.bean readScratchBank:1];
         if (!self.waitingToReportDisconnect) {
             [self postNotificationWithText:@"Cane Connected!!"];
         }
@@ -181,6 +182,19 @@
                                                             object:nil
                                                           userInfo:@{ @"voltage" : bean.batteryVoltage }];
     }
+}
+
+- (void)bean:(PTDBean *)bean didUpdateScratchBank:(NSInteger)bank data:(NSData *)data {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"beanDidUpdateScratchBank"
+                                                        object:nil
+                                                      userInfo:@{ @"bank" : @(bank),
+                                                                  @"data" : data }];
+}
+
+- (void)bean:(PTDBean *)bean serialDataReceived:(NSData *)data {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"beanSerialDataReceived"
+                                                        object:nil
+                                                      userInfo:@{ @"data" : data }];
 }
 
 @end

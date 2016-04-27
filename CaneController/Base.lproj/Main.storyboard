@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,17 +18,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZL-Em-z1w">
-                                <rect key="frame" x="26" y="28" width="145" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="?V" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZL-Em-z1w">
+                                <rect key="frame" x="228" y="36" width="145" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jsR-aX-Uba">
+                                <rect key="frame" x="112" y="116" width="377" height="29"/>
+                                <segments>
+                                    <segment title="Reactive"/>
+                                    <segment title="Rainbow"/>
+                                    <segment title="Party!"/>
+                                    <segment title="Knight"/>
+                                    <segment title="Light!"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentModeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="QoF-1b-e5b"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tZL-Em-z1w" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="05r-Me-X5M"/>
+                            <constraint firstItem="jsR-aX-Uba" firstAttribute="top" secondItem="tZL-Em-z1w" secondAttribute="bottom" constant="50" id="542-FP-byy"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="jsR-aX-Uba" secondAttribute="trailing" constant="10" id="5i6-DK-1xl"/>
+                            <constraint firstItem="tZL-Em-z1w" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="6z2-vE-GeB"/>
+                            <constraint firstItem="jsR-aX-Uba" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cOk-I8-nsS"/>
+                            <constraint firstItem="jsR-aX-Uba" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="jqv-Vz-gHF"/>
+                        </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
                         <outlet property="labelVoltage" destination="tZL-Em-z1w" id="ap5-la-f4j"/>
+                        <outlet property="segmentMode" destination="jsR-aX-Uba" id="uni-oE-evu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

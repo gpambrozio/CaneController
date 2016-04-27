@@ -14,7 +14,35 @@
 		EC5F63A51CC0C1350018ED35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5F63A31CC0C1350018ED35 /* Main.storyboard */; };
 		EC5F63A71CC0C1350018ED35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC5F63A61CC0C1350018ED35 /* Assets.xcassets */; };
 		EC5F63AA1CC0C1350018ED35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5F63A81CC0C1350018ED35 /* LaunchScreen.storyboard */; };
+		EC65DA591CD091E3003A52E8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC65DA581CD091E3003A52E8 /* NotificationCenter.framework */; };
+		EC65DA5D1CD091E3003A52E8 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC65DA5C1CD091E3003A52E8 /* TodayViewController.m */; };
+		EC65DA601CD091E3003A52E8 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC65DA5E1CD091E3003A52E8 /* MainInterface.storyboard */; };
+		EC65DA641CD091E3003A52E8 /* TodayCane.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EC65DA571CD091E3003A52E8 /* TodayCane.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EC65DA621CD091E3003A52E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC5F638F1CC0C1350018ED35 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC65DA561CD091E3003A52E8;
+			remoteInfo = TodayCane;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EC65DA681CD091E3003A52E8 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				EC65DA641CD091E3003A52E8 /* TodayCane.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B25C5C7466EF6137C5C8A24E /* Pods-CaneController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaneController.release.xcconfig"; path = "Pods/Target Support Files/Pods-CaneController/Pods-CaneController.release.xcconfig"; sourceTree = "<group>"; };
@@ -30,6 +58,14 @@
 		EC5F63A61CC0C1350018ED35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC5F63A91CC0C1350018ED35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC5F63AB1CC0C1350018ED35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC65DA571CD091E3003A52E8 /* TodayCane.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayCane.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC65DA581CD091E3003A52E8 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		EC65DA5B1CD091E3003A52E8 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		EC65DA5C1CD091E3003A52E8 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		EC65DA5F1CD091E3003A52E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		EC65DA611CD091E3003A52E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC65DA691CD097FD003A52E8 /* TodayCane.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TodayCane.entitlements; sourceTree = "<group>"; };
+		EC65DA6A1CD09824003A52E8 /* CaneController.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CaneController.entitlements; sourceTree = "<group>"; };
 		ECFCCBBB1CC463470071C460 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -39,6 +75,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2219439DE068EE2E809C6EF5 /* libPods-CaneController.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC65DA541CD091E3003A52E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC65DA591CD091E3003A52E8 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				EC5F63991CC0C1350018ED35 /* CaneController */,
+				EC65DA5A1CD091E3003A52E8 /* TodayCane */,
 				EC5F63981CC0C1350018ED35 /* Products */,
 				692786CF73FBA835AB3AB4EB /* Pods */,
 				EEDF8D7A941FAACBB4BD5BD9 /* Frameworks */,
@@ -68,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				EC5F63971CC0C1350018ED35 /* CaneController.app */,
+				EC65DA571CD091E3003A52E8 /* TodayCane.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,6 +121,7 @@
 		EC5F63991CC0C1350018ED35 /* CaneController */ = {
 			isa = PBXGroup;
 			children = (
+				EC65DA6A1CD09824003A52E8 /* CaneController.entitlements */,
 				EC5F639D1CC0C1350018ED35 /* AppDelegate.h */,
 				EC5F639E1CC0C1350018ED35 /* AppDelegate.m */,
 				EC5F63A01CC0C1350018ED35 /* ViewController.h */,
@@ -97,10 +144,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EC65DA5A1CD091E3003A52E8 /* TodayCane */ = {
+			isa = PBXGroup;
+			children = (
+				EC65DA691CD097FD003A52E8 /* TodayCane.entitlements */,
+				EC65DA5B1CD091E3003A52E8 /* TodayViewController.h */,
+				EC65DA5C1CD091E3003A52E8 /* TodayViewController.m */,
+				EC65DA5E1CD091E3003A52E8 /* MainInterface.storyboard */,
+				EC65DA611CD091E3003A52E8 /* Info.plist */,
+			);
+			path = TodayCane;
+			sourceTree = "<group>";
+		};
 		EEDF8D7A941FAACBB4BD5BD9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				E3676A5D37DF38C4BC77F662 /* libPods-CaneController.a */,
+				EC65DA581CD091E3003A52E8 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -118,15 +178,34 @@
 				EC5F63951CC0C1350018ED35 /* Resources */,
 				D6145E1988D28782FC33E24F /* Embed Pods Frameworks */,
 				193FF1F5059EBDAC1639C9A5 /* Copy Pods Resources */,
+				EC65DA681CD091E3003A52E8 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				EC65DA631CD091E3003A52E8 /* PBXTargetDependency */,
 			);
 			name = CaneController;
 			productName = CaneController;
 			productReference = EC5F63971CC0C1350018ED35 /* CaneController.app */;
 			productType = "com.apple.product-type.application";
+		};
+		EC65DA561CD091E3003A52E8 /* TodayCane */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC65DA671CD091E3003A52E8 /* Build configuration list for PBXNativeTarget "TodayCane" */;
+			buildPhases = (
+				EC65DA531CD091E3003A52E8 /* Sources */,
+				EC65DA541CD091E3003A52E8 /* Frameworks */,
+				EC65DA551CD091E3003A52E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TodayCane;
+			productName = TodayCane;
+			productReference = EC65DA571CD091E3003A52E8 /* TodayCane.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -141,10 +220,22 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = XG2WG7U93U;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
 							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+					EC65DA561CD091E3003A52E8 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = XG2WG7U93U;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
 						};
@@ -165,6 +256,7 @@
 			projectRoot = "";
 			targets = (
 				EC5F63961CC0C1350018ED35 /* CaneController */,
+				EC65DA561CD091E3003A52E8 /* TodayCane */,
 			);
 		};
 /* End PBXProject section */
@@ -177,6 +269,14 @@
 				EC5F63AA1CC0C1350018ED35 /* LaunchScreen.storyboard in Resources */,
 				EC5F63A71CC0C1350018ED35 /* Assets.xcassets in Resources */,
 				EC5F63A51CC0C1350018ED35 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC65DA551CD091E3003A52E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC65DA601CD091E3003A52E8 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +341,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EC65DA531CD091E3003A52E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC65DA5D1CD091E3003A52E8 /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EC65DA631CD091E3003A52E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC65DA561CD091E3003A52E8 /* TodayCane */;
+			targetProxy = EC65DA621CD091E3003A52E8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EC5F63A31CC0C1350018ED35 /* Main.storyboard */ = {
@@ -258,6 +374,14 @@
 				EC5F63A91CC0C1350018ED35 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		EC65DA5E1CD091E3003A52E8 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC65DA5F1CD091E3003A52E8 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -350,6 +474,7 @@
 			baseConfigurationReference = D3E55240971B3F8CE16CF461 /* Pods-CaneController.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CaneController/CaneController.entitlements;
 				GCC_PREFIX_HEADER = CaneController/PrefixHeader.pch;
 				INFOPLIST_FILE = CaneController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -363,11 +488,36 @@
 			baseConfigurationReference = B25C5C7466EF6137C5C8A24E /* Pods-CaneController.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CaneController/CaneController.entitlements;
 				GCC_PREFIX_HEADER = CaneController/PrefixHeader.pch;
 				INFOPLIST_FILE = CaneController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.eng.gustavo.CaneController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EC65DA651CD091E3003A52E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TodayCane/TodayCane.entitlements;
+				INFOPLIST_FILE = TodayCane/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.eng.gustavo.CaneController.TodayCane;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		EC65DA661CD091E3003A52E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TodayCane/TodayCane.entitlements;
+				INFOPLIST_FILE = TodayCane/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.eng.gustavo.CaneController.TodayCane;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -391,6 +541,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		EC65DA671CD091E3003A52E8 /* Build configuration list for PBXNativeTarget "TodayCane" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC65DA651CD091E3003A52E8 /* Debug */,
+				EC65DA661CD091E3003A52E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
