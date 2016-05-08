@@ -16,6 +16,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelVoltage;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentMode;
 
+@property (nonatomic, assign) BOOL receivingModes;
+@property (nonatomic, assign) NSInteger currentMode;
+
+@property (nonatomic, strong) NSMutableArray *modes;
+
 @end
 
 @implementation ViewController
@@ -26,6 +31,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.modes = [[NSMutableArray alloc] init];
+    [self.segmentMode removeAllSegments];
+    self.currentMode = -1;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(beanDidUpdateBatteryVoltage:)
                                                  name:@"beanDidUpdateBatteryVoltage"
@@ -39,11 +48,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(beanSerialDataReceived:)
                                                  name:@"beanSerialDataReceived"
-                                               object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(userDefaultsDidChange:)
-                                                 name:NSUserDefaultsDidChangeNotification
                                                object:nil];
 }
 
@@ -60,6 +64,7 @@
         case 1: {
             char mode = ((char *)data.bytes)[0];
             self.segmentMode.selectedSegmentIndex = mode;
+            self.currentMode = mode;
             break;
         }
 
@@ -71,28 +76,38 @@
 - (void)beanSerialDataReceived:(NSNotification *)notification {
     NSData *data = notification.userInfo[@"data"];
     NSString *received = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    received = [received stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     if ([received hasPrefix:@"Mode:"] && received.length >= 6) {
         char mode = [received characterAtIndex:5] - '0';
         self.segmentMode.selectedSegmentIndex = mode;
+        self.currentMode = mode;
+    } else if ([received hasPrefix:@"Modes"]) {
+        self.receivingModes = YES;
+        [self.modes removeAllObjects];
+    } else if (self.receivingModes && received.length) {
+        if ([received characterAtIndex:0] == '-') {
+            self.receivingModes = NO;
+            [self updateModesSegment];
+        } else {
+            [self.modes addObject:received];
+        }
     }
 }
 
-- (void)userDefaultsDidChange:(NSNotification *)notification {
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.br.eng.gustavo.CaneController"];
-    NSInteger mode = [defaults integerForKey:@"mode"];
-    if (self.segmentMode.selectedSegmentIndex != mode) {
-        self.segmentMode.selectedSegmentIndex = mode;
-        [self segmentModeChanged:nil];
+- (void)updateModesSegment {
+    [self.segmentMode removeAllSegments];
+    NSUInteger index = 0;
+    for (NSString *mode in self.modes) {
+        [self.segmentMode insertSegmentWithTitle:mode atIndex:index++ animated:NO];
+    }
+    if (self.currentMode >= 0) {
+        self.segmentMode.selectedSegmentIndex = self.currentMode;
     }
 }
 
 - (IBAction)segmentModeChanged:(id)sender {
     [APP_DELEGATE.bean sendSerialString:[[NSString alloc] initWithFormat:@"M%ld\n", (long)self.segmentMode.selectedSegmentIndex]];
-    if (sender) {
-        NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.br.eng.gustavo.CaneController"];
-        [defaults setInteger:self.segmentMode.selectedSegmentIndex forKey:@"mode"];
-        [defaults synchronize];
-    }
+    self.currentMode = self.segmentMode.selectedSegmentIndex;
 }
 
 @end

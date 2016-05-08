@@ -135,6 +135,7 @@
         self.bean.delegate = self;
         self.bean.autoReconnect = YES;
         [self.bean readScratchBank:1];
+        [self.bean sendSerialString:@"d0\n"];
         if (!self.waitingToReportDisconnect) {
             [self postNotificationWithText:@"Cane Connected!!"];
         }
